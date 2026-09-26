@@ -72,7 +72,7 @@ nop
 nop
 
 === negative subscript on an ARRAY (compiler warns) ===
-WARN: <repo>/episodes\2026-09-25-subscript-is-addition\build\verify\d_bounds.c:3:16: warning: array subscript is below array bounds [-Warray-bounds]
+WARN: <repo>/episodes/2026-09-25-subscript-is-addition/build/verify/d_bounds.c:3:16: warning: array subscript is below array bounds [-Warray-bounds]
 
 === negative subscript on a POINTER (silent) ===
 compiler: ZERO warnings, exit 0
