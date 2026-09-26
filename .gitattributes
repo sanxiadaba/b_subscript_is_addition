@@ -1,0 +1,15 @@
+# 一律用 LF 存，不许做换行转换。
+#
+# ⚠️ 这不是风格偏好，是对账的前提：MANIFEST.sha256 记的是每个文件的 sha256，
+# 而 Git 在 core.autocrlf=true 下会把入库的 LF 换成工作区的 CRLF
+# ⇒ 在 Windows 上克隆一次，字节就变了，wf publish --check 立刻全红。
+* text eol=lf
+
+# 二进制（显式写出来，免得以后有人加 --renormalize）
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.exe binary
+*.o binary
+*.wav binary
+*.mp3 binary
