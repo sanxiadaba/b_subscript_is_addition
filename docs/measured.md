@@ -26,7 +26,7 @@ B1 sizeof(arr) = 20
 B2 sizeof(p) = 4
 B3 f(arr) = 4
 B4 n1/n2 (sizeof(arr)/sizeof(p)) = 5
-B5 sizeof(arr)/sizeof(*arr) = 5
+B5 sizeof(arr)/sizeof(arr[0]) = 5
 
 === disassembly: q[i] and i[q] (i686, -O2) ===
 -- get_i --

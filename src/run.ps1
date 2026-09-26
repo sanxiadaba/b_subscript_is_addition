@@ -100,6 +100,13 @@ int main(void) {
 #   在 i686 上 `sizeof(p)` 恰好也是 4，所以两个式子都得 5（**巧合**），
 #   而换成 x64 前者是 5、**后者是 2**。
 #   ⇒ 光看"结果对不对"永远发现不了它 —— **必须把那个式子本身测出来**。
+#
+# ⚠️ **变量名叫 `q` 而不是 `n5`，是为了让它能上屏。**（2026-09-25 夜）
+#   `int n5 = sizeof(arr) / sizeof(arr[0]);   // 5` 在 36px 等宽下量出来是
+#   **931px**，而 SourceRun 的可用宽是 **830px** —— 超 101px，会被闸门拦下。
+#   改名的理由不是省事：这一行**必须在屏幕上**（它就是"答案对、推理错"那条
+#   的正面证据），而判据要求「装不下**改呈现**，不许缩字」。
+#   证据本身一个字没少 —— `B5` 的 printf 与输出都原样保留。
 Build-And-Run -Name 'b_sizeof.c' -Title 'sizeof and decay' -Source @'
 #include <stdio.h>
 int arr[5] = {10, 20, 30, 40, 50};
@@ -110,14 +117,14 @@ int main(void) {
     int n2 = sizeof(p);
     int n3 = f(arr);
     int n4 = n1 / n2;
-    int n5 = sizeof(arr) / sizeof(*arr);
+    int q = sizeof(arr) / sizeof(arr[0]);
     int sum = n1 + n2 + n3 + n4;
     printf("B1 sizeof(arr) = %d\n", n1);
     printf("B2 sizeof(p) = %d\n", n2);
     printf("B3 f(arr) = %d\n", n3);
     printf("B4 n1/n2 (sizeof(arr)/sizeof(p)) = %d\n", n4);
-    printf("B5 sizeof(arr)/sizeof(*arr) = %d\n", n5);
-    return sum + n5;
+    printf("B5 sizeof(arr)/sizeof(arr[0]) = %d\n", q);
+    return sum + q;
 }
 '@
 
