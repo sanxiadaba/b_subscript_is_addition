@@ -30,7 +30,7 @@ E1[E2]  ≡  *((E1) + (E2))
 | `src/g_nested.c` | 方括号里放**表达式**（含函数调用），以及四对精确反向 |
 | `src/h_matrix.c` | 二维数组：两层方括号是**两次加法** |
 | `src/c_asm.c` | 汇编对照的样本（`q[i]` 与 `i[q]` 两个函数，函数体除寄存器顺序外完全相同） |
-| `src/b_sizeof.c` | 数组名在加法里**退化成指针**（`sizeof(arr)` vs `sizeof(arr)/sizeof(arr[0])`） |
+| `src/b_sizeof.c` | 数组名在加法里**退化成指针**（`sizeof(arr)` vs `n1/sizeof(int)`） |
 | `src/i_type.c` | `int *bad = arr[2];` ⇒ gcc 的**真实诊断原文** |
 | `src/j_typesize.c` | `sizeof(arr[2])` 与 `sizeof(int*)` 都是 4 ⇒ **数值上分不出类型**（这就是为什么需要 `i_type.c`） |
 | `src/d_bounds.c` · `src/e_bounds.c` | 越界**不检查**（这是前提，不是建议） |
@@ -114,7 +114,7 @@ A7 (p+2)[0] = 30      A8 "hello"[1] = 101   A9 1["hello"] = 101
 B1 sizeof(arr) = 20              数组本身：5 个 int
 B2 sizeof(p) = 4                 传进函数的指针：一个地址
 B4 sizeof(arr) / sizeof(p) = 5
-B5 sizeof(arr) / sizeof(arr[0]) = 5
+B5 n1/sizeof(int) = 5
 ```
 
 ⚠️ `B4` 与 `B5` 在 i686 上**巧合相等**（指针 4 字节 = `int` 4 字节），
