@@ -1,0 +1,17 @@
+mov	0x8(%esp),%edx
+mov	0x4(%esp),%eax
+mov	(%eax,%edx,4),%eax
+ret
+lea	0x0(%esi,%eiz,1),%esi
+mov	0x8(%esp),%edx
+mov	0x4(%esp),%eax
+mov	(%eax,%edx,4),%eax
+ret
+lea	0x0(%esi,%eiz,1),%esi
+mov	0x8(%esp),%eax
+mov	0x4(%esp),%edx
+movsbl	(%edx,%eax,1),%eax
+ret
+nop
+nop
+nop
